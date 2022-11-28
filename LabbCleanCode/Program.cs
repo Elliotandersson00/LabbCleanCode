@@ -9,7 +9,7 @@ namespace MooGame
 
         public static void Main(string[] args)
         {
-
+            //test
             bool playOn = true;
             Console.WriteLine("Enter your user name:\n");
             string name = Console.ReadLine();
