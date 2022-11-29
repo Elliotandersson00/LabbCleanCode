@@ -48,14 +48,8 @@ namespace MooGame
 
                 userData.showTopList();
 
+                playOn = game.GameOver(nGuess,playOn);
 
-                //game.End()?
-                Console.WriteLine("Correct, it took " + nGuess + " guesses\nContinue?");
-                string answer = Console.ReadLine();
-                if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
-                {
-                    playOn = false;
-                }
             }
         }
            

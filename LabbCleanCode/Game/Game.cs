@@ -53,6 +53,16 @@ namespace LabbCleanCode.Game
         {
           
         }
+        public bool GameOver(int numberOfGuesses, bool playOn)
+        {
+            Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
+            string answer = Console.ReadLine();
+            if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
+            {
+                playOn = false;
+            }
+            return playOn;
+        }
     }
  
 }
