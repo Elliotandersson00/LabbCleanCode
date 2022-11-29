@@ -51,8 +51,7 @@ namespace MooGame
                 continueGame = game.GameOver(nGuess,continueGame);
 
             }
-        }
-           
+        }   
     }   
 }
 
