@@ -13,6 +13,7 @@ namespace MooGame
         {
             
             Game game = new Game();
+            
             bool playOn = true;
             Console.WriteLine("Enter your user name:\n");
             string name = Console.ReadLine();
@@ -38,9 +39,10 @@ namespace MooGame
                     bbcc = game.CheckPlayerGuess(goal, guess);
                     Console.WriteLine(bbcc + "\n");
                 }
-                StreamWriter output = new StreamWriter("result.txt", append: true);
-                output.WriteLine(name + "#&#" + nGuess);
-                output.Close();
+
+                UserData userData = new UserData(name, nGuess);
+                userData.SaveUserStats(name, nGuess);
+
                 showTopList();
                 Console.WriteLine("Correct, it took " + nGuess + " guesses\nContinue?");
                 string answer = Console.ReadLine();

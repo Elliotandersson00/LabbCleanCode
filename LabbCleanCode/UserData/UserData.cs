@@ -42,5 +42,11 @@ namespace LabbCleanCode.UserData
         {
             return Name.GetHashCode();
         }
+        public void SaveUserStats(string name, int numberOfGuesses)
+        {
+            StreamWriter output = new StreamWriter("result.txt", append: true);
+            output.WriteLine(name + "#&#" + numberOfGuesses);
+            output.Close();
+        }
     }
 }
