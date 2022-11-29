@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LabbCleanCode.Game
 {
-    internal class IGame
+    internal interface IGame
     {
+        string CheckPlayerGuess(string goal, string guess);
+        string GenerateCorrectNumbers();
+        void GameStart();
     }
 }
