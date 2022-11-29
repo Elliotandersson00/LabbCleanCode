@@ -11,10 +11,16 @@ namespace LabbCleanCode.Game.Tests
     [TestClass()]
     public class GameTests
     {
+        Game? game;
+        [TestInitialize()]
+        public void Initialize()
+        {
+            this.game = new Game();
+        }
         [TestMethod()]
         public void GenerateCorrectNumbersTest()
         {
-            Assert.Fail();
+            Assert.AreNotEqual(0, game?.GenerateCorrectNumbers());
         }
     }
 }
