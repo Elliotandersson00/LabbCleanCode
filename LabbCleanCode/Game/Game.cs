@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LabbCleanCode.Game
 {
-    internal class Game : IGame
+    public class Game : IGame
     {
      
         public string CheckPlayerGuess(string goal, string guess)
