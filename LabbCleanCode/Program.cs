@@ -13,7 +13,8 @@ namespace MooGame
         {
             
             Game game = new Game();
-            
+          
+
             bool playOn = true;
             Console.WriteLine("Enter your user name:\n");
             string name = Console.ReadLine();
@@ -40,10 +41,15 @@ namespace MooGame
                     Console.WriteLine(bbcc + "\n");
                 }
 
+                //kan man skapa en tom user utan namn, skicka in name och guess i 
+                //functionen under och sedan spara ner den i UserData?
                 UserData userData = new UserData(name, nGuess);
-                userData.SaveUserStats(name, nGuess);
+                userData.SaveUserNameAndGuesses(name, nGuess);
 
-                showTopList();
+                userData.showTopList();
+
+
+                //game.End()?
                 Console.WriteLine("Correct, it took " + nGuess + " guesses\nContinue?");
                 string answer = Console.ReadLine();
                 if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
@@ -52,43 +58,8 @@ namespace MooGame
                 }
             }
         }
-       
-
-
-        static void showTopList()
-        {
-            StreamReader input = new StreamReader("result.txt");
-            List<UserData> results = new List<UserData>();
-            string line;
-            while ((line = input.ReadLine()) != null)
-            {
-                string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
-                string name = nameAndScore[0];
-                int guesses = Convert.ToInt32(nameAndScore[1]);
-                UserData pd = new UserData(name, guesses);
-                int pos = results.IndexOf(pd);
-                if (pos < 0)
-                {
-                    results.Add(pd);
-                }
-                else
-                {
-                    results[pos].Update(guesses);
-                }
-
-
-            }
-            results.Sort((p1, p2) => p1.Average().CompareTo(p2.Average()));
-            Console.WriteLine("Player   games average");
-            foreach (UserData p in results)
-            {
-                Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.Name, p.NGames, p.Average()));
-            }
-            input.Close();
-        }
-    }
-
-   
+           
+    }   
 }
 
 // provar pusha min egen branch
