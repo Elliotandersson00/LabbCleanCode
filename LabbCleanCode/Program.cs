@@ -24,6 +24,7 @@ namespace MooGame
                 Console.WriteLine("For practice, number is: " + goal + "\n");
                 string guess = Console.ReadLine();
 
+                
                 int nGuess = 1;
                 string bbcc = checkBC(goal, guess);
                 Console.WriteLine(bbcc + "\n");
