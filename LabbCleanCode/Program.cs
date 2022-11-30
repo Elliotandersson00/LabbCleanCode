@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using LabbCleanCode.UserData;
+using LabbCleanCode.PlayerData;
 using LabbCleanCode.Game;
 
 namespace MooGame
@@ -17,38 +17,38 @@ namespace MooGame
 
             bool continueGame = true;
             Console.WriteLine("Enter your user name:\n");
-            string name = Console.ReadLine();
+            string playerName = Console.ReadLine();
 
             while (continueGame)
             {
-                string goal = game.GenerateCorrectNumbers();
+                string generatedNumber = game.GenerateCorrectNumbers();
 
 
                 Console.WriteLine("New game:\n");
                 //comment out or remove next line to play real games!
-                Console.WriteLine("For practice, number is: " + goal + "\n");
-                string guess = Console.ReadLine();
+                Console.WriteLine("For practice, number is: " + generatedNumber + "\n");
+                string ?playerGuess = Console.ReadLine();
 
-                int nGuess = 1;
-                string bbcc = game.CheckPlayerGuess(goal, guess);
-                Console.WriteLine(bbcc + "\n");
-                while (bbcc != "BBBB,")
+                int numberOfGuesses = 1;
+                string resultSequenceOfPlayerGuess = game.CheckPlayerGuess(generatedNumber, playerGuess!);
+                Console.WriteLine(resultSequenceOfPlayerGuess + "\n");
+                while (resultSequenceOfPlayerGuess != "BBBB,")
                 {
-                    nGuess++;
-                    guess = Console.ReadLine();
-                    Console.WriteLine(guess + "\n");
-                    bbcc = game.CheckPlayerGuess(goal, guess);
-                    Console.WriteLine(bbcc + "\n");
+                    numberOfGuesses++;
+                    playerGuess = Console.ReadLine();
+                    Console.WriteLine(playerGuess + "\n");
+                    resultSequenceOfPlayerGuess = game.CheckPlayerGuess(generatedNumber, playerGuess!);
+                    Console.WriteLine(resultSequenceOfPlayerGuess + "\n");
                 }
 
                 //kan man skapa en tom user utan namn, skicka in name och guess i 
                 //functionen under och sedan spara ner den i UserData?
-                UserData userData = new UserData(name, nGuess);
-                userData.SaveUserNameAndGuesses(name, nGuess);
+                PlayerData userData = new PlayerData(playerName, numberOfGuesses);
+                userData.SaveUserNameAndGuesses(playerName, numberOfGuesses);
 
                 userData.showTopList();
 
-                continueGame = game.GameOver(nGuess,continueGame);
+                continueGame = game.GameOver(numberOfGuesses,continueGame);
 
             }
         }   

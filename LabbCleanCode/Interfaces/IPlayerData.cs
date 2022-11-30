@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace LabbCleanCode.Interfaces
 {
-    public interface IUserData
+    public interface IPlayerData
     {
-       public void Update(int guesses);
+       public void UpdatePlayerData(int guesses);
 
-       public double Average();
+       public double AverageAmountOfGuessesPerGame();
 
-       public bool Equals(Object p);
+        public bool Equals(Object player);
 
-       public int GetHashCode();
+        public int GetHashCode();
 
         public void SaveUserNameAndGuesses(string name, int numberOfGuesses);
 
-        public void showTopList();
+        public void ShowTopList();
 
 
     }
