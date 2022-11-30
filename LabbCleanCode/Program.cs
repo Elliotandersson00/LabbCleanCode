@@ -15,11 +15,11 @@ namespace MooGame
             Game game = new Game();
           
 
-            bool playOn = true;
+            bool continueGame = true;
             Console.WriteLine("Enter your user name:\n");
             string name = Console.ReadLine();
 
-            while (playOn)
+            while (continueGame)
             {
                 string goal = game.GenerateCorrectNumbers();
 
@@ -48,11 +48,10 @@ namespace MooGame
 
                 userData.showTopList();
 
-                playOn = game.GameOver(nGuess,playOn);
+                continueGame = game.GameOver(nGuess,continueGame);
 
             }
-        }
-           
+        }   
     }   
 }
 

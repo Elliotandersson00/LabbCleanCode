@@ -54,15 +54,15 @@ namespace LabbCleanCode.Game
         {
           
         }
-        public bool GameOver(int numberOfGuesses, bool playOn)
+        public bool GameOver(int numberOfGuesses, bool continueGame)
         {
             Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
             string answer = Console.ReadLine();
             if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
             {
-                playOn = false;
+                continueGame = false;
             }
-            return playOn;
+            return continueGame;
         }
     }
  

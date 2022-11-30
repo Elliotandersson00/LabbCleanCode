@@ -11,6 +11,6 @@ namespace LabbCleanCode.Interfaces
         string CheckPlayerGuess(string goal, string guess);
         string GenerateCorrectNumbers();
         void GameStart();
-        bool GameOver(int numberOfGuesses, bool playOn);
+        bool GameOver(int numberOfGuesses, bool continueGame);
     }
 }
