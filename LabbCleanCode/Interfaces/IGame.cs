@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LabbCleanCode.Game
+namespace LabbCleanCode.Interfaces
 {
     internal interface IGame
     {
