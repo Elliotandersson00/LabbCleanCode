@@ -14,7 +14,7 @@ namespace LabbCleanCode.PlayerData
 
             int totalGuesses;
       
-
+            
             public PlayerData(string playerName, int guesses)
             {
                 this.PlayerName = playerName;
@@ -51,7 +51,7 @@ namespace LabbCleanCode.PlayerData
             output.WriteLine(name + "#&#" + numberOfGuesses);
             output.Close();
         }
-        public void showTopList()
+        public void ShowTopList()
         {
             StreamReader input = new StreamReader("result.txt");
             List<PlayerData> results = new List<PlayerData>();
@@ -83,11 +83,6 @@ namespace LabbCleanCode.PlayerData
                 Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.PlayerName, p.NumberOfGames, p.AverageAmountOfGuessesPerGame()));
             }
             input.Close();
-        }
-
-        public void ShowTopList()
-        {
-            throw new NotImplementedException();
         }
     }
 }

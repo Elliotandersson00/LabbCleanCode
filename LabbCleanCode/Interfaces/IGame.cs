@@ -10,7 +10,7 @@ namespace LabbCleanCode.Interfaces
     {
         string CheckPlayerGuess(string correctNumber, string guess);
         string GenerateCorrectNumbers();
-        void GameStart();
+        int GameStart();
         bool GameOver(int numberOfGuesses, bool continueGame);
     }
 }

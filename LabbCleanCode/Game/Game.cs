@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LabbCleanCode.Interfaces;
+using LabbCleanCode.PlayerData;
 
 namespace LabbCleanCode.Game
 {
-    public class Game : IGame
+     public class Game : IGame 
     {
-     
         public string CheckPlayerGuess(string correctNumber, string playerGuess)
         {
             int cows = 0, bulls = 0;
@@ -51,10 +51,41 @@ namespace LabbCleanCode.Game
             }
             return goal;
         }
-        public void GameStart()
+        public int GameStart()
         {
-          
+
+            int numberOfGuesses = 0;
+            bool continueGame = true;
+
+            while (continueGame)
+            {
+                string generatedNumber = GenerateCorrectNumbers();
+
+                Console.WriteLine("New game:\n");
+                //comment out or remove next line to play real games!
+                Console.WriteLine("For practice, number is: " + generatedNumber + "\n");
+                string? playerGuess = Console.ReadLine();
+
+                numberOfGuesses++;
+                string resultSequenceOfPlayerGuess = CheckPlayerGuess(generatedNumber, playerGuess!);
+                Console.WriteLine(resultSequenceOfPlayerGuess + "\n");
+                while (resultSequenceOfPlayerGuess != "BBBB,")
+                {
+                    numberOfGuesses++;
+                    playerGuess = Console.ReadLine();
+                    Console.WriteLine(playerGuess + "\n");
+                    resultSequenceOfPlayerGuess = CheckPlayerGuess(generatedNumber, playerGuess!);
+                    Console.WriteLine(resultSequenceOfPlayerGuess + "\n");
+                }
+                continueGame = GameOver(numberOfGuesses, continueGame);
+
+            }
+            return numberOfGuesses;
+
         }
+
+        
+
         public bool GameOver(int numberOfGuesses, bool continueGame)
         {
             Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
