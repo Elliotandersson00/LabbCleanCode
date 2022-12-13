@@ -5,15 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LabbCleanCode.PlayerData
+namespace LabbCleanCode
 {
-    public class PlayerData : IPlayerData
+    public class PlayerData : Game, IPlayerData 
+
+
     {
             public string PlayerName { get; private set; }
             public int NumberOfGames { get; private set; }
 
             int totalGuesses;
       
+
+
             
             public PlayerData(string playerName, int guesses)
             {
@@ -84,5 +88,14 @@ namespace LabbCleanCode.PlayerData
             }
             input.Close();
         }
+
+      
+
+        public int GameStart()
+        {
+            throw new NotImplementedException();
+        }
+
+      
     }
 }

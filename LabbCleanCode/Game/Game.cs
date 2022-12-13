@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LabbCleanCode.Interfaces;
-using LabbCleanCode.PlayerData;
+using LabbCleanCode;
 
-namespace LabbCleanCode.Game
+namespace LabbCleanCode
 {
      public class Game : IGame 
     {

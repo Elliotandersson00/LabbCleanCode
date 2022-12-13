@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using LabbCleanCode.PlayerData;
-using LabbCleanCode.Game;
+using LabbCleanCode;
 using LabbCleanCode.Interfaces;
 
 namespace MooGame

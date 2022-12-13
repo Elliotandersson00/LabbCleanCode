@@ -8,9 +8,8 @@ namespace LabbCleanCode.Interfaces
 {
     internal interface IGame
     {
-        string CheckPlayerGuess(string correctNumber, string guess);
-        string GenerateCorrectNumbers();
+    
         int GameStart();
-        bool GameOver(int numberOfGuesses, bool continueGame);
+      
     }
 }
