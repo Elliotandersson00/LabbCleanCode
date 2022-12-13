@@ -7,26 +7,25 @@ using System.Threading.Tasks;
 
 namespace LabbCleanCode
 {
-    public class PlayerData : Game, IPlayerData 
-
-
+    public class PlayerData : IPlayerData 
     {
             public string PlayerName { get; private set; }
             public int NumberOfGames { get; private set; }
 
             int totalGuesses;
-      
 
+            private IUI ui;
 
-            
-            public PlayerData(string playerName, int guesses)
+            public PlayerData(string playerName, int guesses, IUI ui)
             {
                 this.PlayerName = playerName;
                 NumberOfGames = 1;
                 totalGuesses = guesses;
+                this.ui = ui;
             }
 
-            public void UpdatePlayerData(int guesses)
+
+        public void UpdatePlayerData(int guesses)
             {
                 totalGuesses += guesses;
                 NumberOfGames++;
@@ -67,7 +66,7 @@ namespace LabbCleanCode
                 string[] nameAndScore = playerNameAndScoreSplitter.Split(new string[] { "#&#" }, StringSplitOptions.None);
                 string playerName = nameAndScore[0];
                 int totalGuesses = Convert.ToInt32(nameAndScore[1]);
-                PlayerData playerData = new PlayerData(playerName, totalGuesses);
+                PlayerData playerData = new PlayerData(playerName, totalGuesses, ui);
                 int pos = results.IndexOf(playerData);
                 if (pos < 0)
                 {
@@ -81,21 +80,13 @@ namespace LabbCleanCode
 
             }
             results.Sort((p1, p2) => p1.AverageAmountOfGuessesPerGame().CompareTo(p2.AverageAmountOfGuessesPerGame()));
-            Console.WriteLine("Player   games average");
+            ui.PutString("Player   games average");
             foreach (PlayerData p in results)
             {
-                Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.PlayerName, p.NumberOfGames, p.AverageAmountOfGuessesPerGame()));
+                ui.PutString(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.PlayerName, p.NumberOfGames, p.AverageAmountOfGuessesPerGame()));
             }
             input.Close();
         }
-
-      
-
-        public int GameStart()
-        {
-            throw new NotImplementedException();
-        }
-
       
     }
 }

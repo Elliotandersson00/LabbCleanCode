@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace LabbCleanCode.Interfaces
 {
-    public interface IGame
+    public interface IUI
     {
-    
-        int GameStart();
-      
+        void PutString(string s);
+        string GetString();
+        void Exit();
+        void Clear();
     }
 }

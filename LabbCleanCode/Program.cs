@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using LabbCleanCode;
 using LabbCleanCode.Interfaces;
+using LabbCleanCode.ConsolIO;
 
 namespace MooGame
 {
@@ -11,14 +12,16 @@ namespace MooGame
 
         public static void Main(string[] args)
         {
-            Game game = new Game();
+            IUI ui = new ConsolIO();
+            Game game = new Game(ui);
 
             Console.WriteLine("Enter your user name:\n");
             string playerName = Console.ReadLine();
 
             int numberOfGuesses = game.GameStart();
+            
 
-            PlayerData userData = new PlayerData(playerName, numberOfGuesses);
+            PlayerData userData = new PlayerData(playerName, numberOfGuesses, ui);
             userData.SaveUserNameAndGuesses(playerName, numberOfGuesses);
 
             userData.ShowTopList();

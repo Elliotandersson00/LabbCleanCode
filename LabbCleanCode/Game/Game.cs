@@ -4,17 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LabbCleanCode.Interfaces;
-using LabbCleanCode;
 
 namespace LabbCleanCode
 {
-     public class Game : IGame 
+     public class Game :  IGame 
     {
+        private IUI ui;
+
+        public Game(IUI ui)
+        {
+            this.ui = ui;
+        }
+
         public string CheckPlayerGuess(string correctNumber, string playerGuess)
         {
             int cows = 0, bulls = 0;
            // if sats på input ifall spelare inte gissar på 4 siffror
-           playerGuess += "    ";     // if player entered less than 4 chars
+           playerGuess += "    "; // if player entered less than 4 chars
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
@@ -56,26 +62,26 @@ namespace LabbCleanCode
 
             int numberOfGuesses = 0;
             bool continueGame = true;
-
+            //string newGame = "New game:\n";
             while (continueGame)
             {
                 string generatedNumber = GenerateCorrectNumbers();
 
-                Console.WriteLine("New game:\n");
+                ui.PutString("New game:\n");
                 //comment out or remove next line to play real games!
-                Console.WriteLine("For practice, number is: " + generatedNumber + "\n");
-                string? playerGuess = Console.ReadLine();
+                ui.PutString("For practice, number is: " + generatedNumber + "\n");
+                string? playerGuess = ui.GetString();
 
                 numberOfGuesses++;
                 string resultSequenceOfPlayerGuess = CheckPlayerGuess(generatedNumber, playerGuess!);
-                Console.WriteLine(resultSequenceOfPlayerGuess + "\n");
+                ui.PutString(resultSequenceOfPlayerGuess + "\n");
                 while (resultSequenceOfPlayerGuess != "BBBB,")
                 {
                     numberOfGuesses++;
-                    playerGuess = Console.ReadLine();
-                    Console.WriteLine(playerGuess + "\n");
+                    playerGuess = ui.GetString();
+                    ui.PutString(playerGuess + "\n");
                     resultSequenceOfPlayerGuess = CheckPlayerGuess(generatedNumber, playerGuess!);
-                    Console.WriteLine(resultSequenceOfPlayerGuess + "\n");
+                    ui.PutString(resultSequenceOfPlayerGuess + "\n");
                 }
                 continueGame = GameOver(numberOfGuesses, continueGame);
 
@@ -88,8 +94,8 @@ namespace LabbCleanCode
 
         public bool GameOver(int numberOfGuesses, bool continueGame)
         {
-            Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
-            string answer = Console.ReadLine();
+            ui.PutString("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
+            string answer = ui.GetString();
             if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
             {
                 continueGame = false;
