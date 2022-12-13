@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabbCleanCode
 {
-    public class PlayerData : IPlayerData 
+    public class PlayerData : Game, IPlayerData 
     {
             public string PlayerName { get; private set; }
             public int NumberOfGames { get; private set; }
@@ -15,8 +15,9 @@ namespace LabbCleanCode
             int totalGuesses;
 
             private IUI ui;
+            public Game game;
 
-            public PlayerData(string playerName, int guesses, IUI ui)
+            public PlayerData(string playerName, int guesses, IUI ui) : base(playerName, guesses, ui)
             {
                 this.PlayerName = playerName;
                 NumberOfGames = 1;

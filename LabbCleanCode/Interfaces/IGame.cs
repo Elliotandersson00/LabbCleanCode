@@ -9,7 +9,7 @@ namespace LabbCleanCode.Interfaces
     public interface IGame
     {
     
-        int GameStart();
-      
+        void GameStart();
+     
     }
 }

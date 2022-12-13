@@ -7,12 +7,21 @@ using LabbCleanCode.Interfaces;
 
 namespace LabbCleanCode
 {
-     public class Game :  IGame 
+     public class Game : IGame 
     {
         private IUI ui;
+        private string playerName;
+        private int guesses;
 
         public Game(IUI ui)
         {
+            this.ui = ui;
+        }
+
+        public Game(string playerName, int guesses, IUI ui)
+        {
+            this.playerName = playerName;
+            this.guesses = guesses;
             this.ui = ui;
         }
 
@@ -57,12 +66,17 @@ namespace LabbCleanCode
             }
             return goal;
         }
-        public int GameStart()
+        public void GameStart()
         {
-
+          
+            string playerName;
             int numberOfGuesses = 0;
             bool continueGame = true;
-            //string newGame = "New game:\n";
+
+            ui.PutString("Enter your user name:\n");
+            playerName = ui.GetString();
+            PlayerData playerData = new PlayerData(playerName, numberOfGuesses, ui);
+
             while (continueGame)
             {
                 string generatedNumber = GenerateCorrectNumbers();
@@ -86,7 +100,8 @@ namespace LabbCleanCode
                 continueGame = GameOver(numberOfGuesses, continueGame);
 
             }
-            return numberOfGuesses;
+            playerData.SaveUserNameAndGuesses(playerName, numberOfGuesses);
+            playerData.ShowTopList();
 
         }
 

@@ -14,19 +14,8 @@ namespace MooGame
         {
             IUI ui = new ConsolIO();
             Game game = new Game(ui);
-
-            Console.WriteLine("Enter your user name:\n");
-            string playerName = Console.ReadLine();
-
-            int numberOfGuesses = game.GameStart();
+            game.GameStart();
             
-
-            PlayerData userData = new PlayerData(playerName, numberOfGuesses, ui);
-            userData.SaveUserNameAndGuesses(playerName, numberOfGuesses);
-
-            userData.ShowTopList();
         }
     }   
 }
-
-// provar pusha min egen branch
