@@ -31,9 +31,21 @@ namespace LabbCleanCode.Tests
         {
             string correctNumber = "1234";
             string playerGuess = "12";
-            
+
 
             Assert.AreNotEqual(4, game?.CheckPlayerGuess(correctNumber, playerGuess));
+        }
+
+        [TestMethod()]
+        public void GameStartTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GameOverTest()
+        {
+            Assert.Fail();
         }
     }
 }
