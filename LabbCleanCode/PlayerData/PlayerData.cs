@@ -37,7 +37,7 @@ namespace LabbCleanCode
                 return (double)totalGuesses / NumberOfGames;
             }
 
-        //Built in .Net method that Adds Data To Existing Player in the program.
+       
         public override bool Equals(Object player)
         {
             return PlayerName.Equals(((PlayerData)player).PlayerName);

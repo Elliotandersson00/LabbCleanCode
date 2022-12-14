@@ -10,7 +10,7 @@ namespace LabbCleanCode
      public class Game : IGame 
     {
         private IUI ui;
-        private string playerName;
+        private string? playerName;
         private int guesses;
 
         public Game(IUI ui)
@@ -49,23 +49,26 @@ namespace LabbCleanCode
             }
             return "BBBB".Substring(0, bulls) + "," + "CCCC".Substring(0, cows);
         }
+
         public string GenerateCorrectNumbers()
         {
             Random randomGenerator = new Random();
             string goal = "";
             for (int i = 0; i < 4; i++)
             {
-                int random = randomGenerator.Next(10);
-                string randomDigit = "" + random;
-                while (goal.Contains(randomDigit))
+                int random;
+                string randomDigit;
+                do
                 {
                     random = randomGenerator.Next(10);
                     randomDigit = "" + random;
                 }
+                while (goal.Contains(randomDigit));
                 goal = goal + randomDigit;
             }
             return goal;
         }
+       
         public void GameStart()
         {
           
@@ -109,6 +112,7 @@ namespace LabbCleanCode
 
         public bool GameOver(int numberOfGuesses, bool continueGame)
         {
+            
             ui.PutString("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
             string answer = ui.GetString();
             if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
