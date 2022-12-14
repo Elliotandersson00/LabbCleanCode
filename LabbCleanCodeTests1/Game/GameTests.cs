@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LabbCleanCode.Interfaces;
+using System.Text.RegularExpressions;
 
 namespace LabbCleanCode.Tests
 {
@@ -23,17 +24,49 @@ namespace LabbCleanCode.Tests
         [TestMethod()]
         public void GenerateCorrectNumbersTest()
         {
-            Assert.AreNotEqual(0, game?.GenerateCorrectNumbers());
+
+            // Arrange
+            string expectedRegex = "^(?!.(.).\\1)\\d{4}$"; // four digits
+
+            // Act
+            string result = game.GenerateCorrectNumbers();
+
+            // Assert
+            Assert.IsTrue(Regex.IsMatch(result, expectedRegex));
+
         }
 
         [TestMethod()]
         public void CheckPlayerGuessTest()
         {
             string correctNumber = "1234";
-            string playerGuess = "12";
-            
+            string playerGuess = "1234";
+            string expected = "BBBB,";
+            string actual = game.CheckPlayerGuess(correctNumber, playerGuess);
 
-            Assert.AreNotEqual(4, game?.CheckPlayerGuess(correctNumber, playerGuess));
+
+            Assert.AreEqual(expected,actual);
+
+             correctNumber = "1234";
+             playerGuess = "1279";
+             expected = "BB,";
+             actual = game.CheckPlayerGuess(correctNumber, playerGuess);
+
+
+             Assert.AreEqual(expected, actual);
+
+             correctNumber = "1234";
+             playerGuess = "1247";
+             expected = "BBC,";
+             actual = game.CheckPlayerGuess(correctNumber, playerGuess);
+
+
+             Assert.AreEqual(expected, actual);
+
         }
+
+       
+  
     }
 }
+

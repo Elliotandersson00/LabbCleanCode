@@ -28,26 +28,27 @@ namespace LabbCleanCode
         public string CheckPlayerGuess(string correctNumber, string playerGuess)
         {
             int cows = 0, bulls = 0;
-           // if sats på input ifall spelare inte gissar på 4 siffror
-           playerGuess += "    "; // if player entered less than 4 chars
+
+            if (playerGuess.Length < 4)
+            {
+                playerGuess = playerGuess.PadRight(4, ' ');
+            }
+
+           
             for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < 4; j++)
+                if (correctNumber[i] == playerGuess[i])
                 {
-                    if (correctNumber[i] == playerGuess[j])
-                    {
-                        if (i == j)
-                        {
-                            bulls++;
-                        }
-                        else
-                        {
-                            cows++;
-                        }
-                    }
+                    bulls++;
+                }
+                else if (correctNumber.Contains(playerGuess[i]))
+                {
+                    cows++;
                 }
             }
-            return "BBBB".Substring(0, bulls) + "," + "CCCC".Substring(0, cows);
+
+           
+            return new string('B', bulls) + "," + new string('C', cows);
         }
 
         public string GenerateCorrectNumbers()

@@ -15,6 +15,7 @@ namespace LabbCleanCode
             int totalGuesses;
 
             private IUI ui;
+
             public Game game;
 
             public PlayerData(string playerName, int guesses, IUI ui) : base(playerName, guesses, ui)
