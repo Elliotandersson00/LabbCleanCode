@@ -21,17 +21,18 @@ namespace LabbCleanCode.Tests
         {
             this.game = new Game(ui);
         }
+      
         [TestMethod()]
         public void GenerateCorrectNumbersTest()
         {
 
-            // Arrange
+            // Regex string checks for 4 uniqe numbers. 
             string expectedRegex = "^(?!.(.).\\1)\\d{4}$"; // four digits
 
-            // Act
+          
             string result = game.GenerateCorrectNumbers();
 
-            // Assert
+           
             Assert.IsTrue(Regex.IsMatch(result, expectedRegex));
 
         }
