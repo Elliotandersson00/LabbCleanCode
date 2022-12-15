@@ -21,7 +21,7 @@ namespace LabbCleanCode.Tests
         {
             this.game = new Game(ui);
         }
-      
+
         [TestMethod()]
         public void GenerateCorrectNumbersTest()
         {
@@ -29,45 +29,44 @@ namespace LabbCleanCode.Tests
             // Regex string checks for 4 uniqe numbers. 
             string expectedRegex = "^(?!.(.).\\1)\\d{4}$"; // four digits
 
-          
+
             string result = game.GenerateCorrectNumbers();
 
-           
+
             Assert.IsTrue(Regex.IsMatch(result, expectedRegex));
 
         }
 
         [TestMethod()]
-        public void CheckPlayerGuessTest()
+        public void GetBullsAndCowsTest()
         {
             string correctNumber = "1234";
             string playerGuess = "1234";
             string expected = "BBBB,";
-            string actual = game.CheckPlayerGuess(correctNumber, playerGuess);
+            string actual = game.GetBullsAndCows(correctNumber, playerGuess);
 
 
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
 
-             correctNumber = "1234";
-             playerGuess = "1279";
-             expected = "BB,";
-             actual = game.CheckPlayerGuess(correctNumber, playerGuess);
-
-
-             Assert.AreEqual(expected, actual);
-
-             correctNumber = "1234";
-             playerGuess = "1247";
-             expected = "BBC,";
-             actual = game.CheckPlayerGuess(correctNumber, playerGuess);
+            correctNumber = "1234";
+            playerGuess = "1279";
+            expected = "BB,";
+            actual = game.GetBullsAndCows(correctNumber, playerGuess);
 
 
-             Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual);
+
+            correctNumber = "1234";
+            playerGuess = "1247";
+            expected = "BBC,";
+            actual = game.GetBullsAndCows(correctNumber, playerGuess);
+
+
+            Assert.AreEqual(expected, actual);
 
         }
 
-       
-  
-    }
+        
+        }
 }
 

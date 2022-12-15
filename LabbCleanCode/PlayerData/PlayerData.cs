@@ -18,13 +18,15 @@ namespace LabbCleanCode
 
             public Game game;
 
-            public PlayerData(string playerName, int guesses, IUI ui) : base(playerName, guesses, ui)
+            public PlayerData(string playerName, int guesses, IUI ui) : base(ui)
             {
                 this.PlayerName = playerName;
                 NumberOfGames = 1;
                 totalGuesses = guesses;
                 this.ui = ui;
             }
+
+            
 
 
         public void UpdatePlayerData(int guesses)

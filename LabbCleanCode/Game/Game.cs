@@ -10,22 +10,15 @@ namespace LabbCleanCode
      public class Game : IGame 
     {
         private IUI ui;
-        private string? playerName;
-        private int guesses;
 
         public Game(IUI ui)
         {
             this.ui = ui;
         }
 
-        public Game(string playerName, int guesses, IUI ui)
-        {
-            this.playerName = playerName;
-            this.guesses = guesses;
-            this.ui = ui;
-        }
+       
 
-        public string CheckPlayerGuess(string correctNumber, string playerGuess)
+        public string GetBullsAndCows(string correctNumber, string playerGuess)   //Testad
         {
             int cows = 0, bulls = 0;
 
@@ -51,21 +44,33 @@ namespace LabbCleanCode
             return new string('B', bulls) + "," + new string('C', cows);
         }
 
-        public string GenerateCorrectNumbers()
+        public string GenerateCorrectNumbers() // Testad
         {
-            Random randomGenerator = new Random();
+
             string goal = "";
-            for (int i = 0; i < 4; i++)
+            try
             {
-                int random;
-                string randomDigit;
-                do
+            Random randomGenerator = new Random();
+                for (int i = 0; i < 4; i++)
                 {
-                    random = randomGenerator.Next(10);
-                    randomDigit = "" + random;
+                    int random;
+                    string randomDigit;
+                    do
+                    {
+                        random = randomGenerator.Next(10);
+                        randomDigit = "" + random;
+                    }
+                    while (goal.Contains(randomDigit));
+                    goal = goal + randomDigit;
+                    
                 }
-                while (goal.Contains(randomDigit));
-                goal = goal + randomDigit;
+
+            }
+            catch (Exception e)
+            {
+
+                ui.ExceptionStringHandler("Could not generate a new number.", e);
+                
             }
             return goal;
         }
@@ -79,7 +84,6 @@ namespace LabbCleanCode
 
             ui.PutString("Enter your user name:\n");
             playerName = ui.GetString();
-            PlayerData playerData = new PlayerData(playerName, numberOfGuesses, ui);
 
             while (continueGame)
             {
@@ -90,26 +94,30 @@ namespace LabbCleanCode
                 ui.PutString("For practice, number is: " + generatedNumber + "\n");
                 string? playerGuess = ui.GetString();
 
-                numberOfGuesses++;
-                string resultSequenceOfPlayerGuess = CheckPlayerGuess(generatedNumber, playerGuess!);
-                ui.PutString(resultSequenceOfPlayerGuess + "\n");
-                while (resultSequenceOfPlayerGuess != "BBBB,")
-                {
-                    numberOfGuesses++;
-                    playerGuess = ui.GetString();
-                    ui.PutString(playerGuess + "\n");
-                    resultSequenceOfPlayerGuess = CheckPlayerGuess(generatedNumber, playerGuess!);
-                    ui.PutString(resultSequenceOfPlayerGuess + "\n");
-                }
+                numberOfGuesses = CheckPlayerGuess(generatedNumber,playerGuess,numberOfGuesses);
                 continueGame = GameOver(numberOfGuesses, continueGame);
-
             }
-            playerData.SaveUserNameAndGuesses(playerName, numberOfGuesses);
-            playerData.ShowTopList();
-
+            SaveAndShowPlayerData(playerName, numberOfGuesses);
         }
 
-        
+        public void SaveAndShowPlayerData(string playerName, int numberOfGuesses)
+        {
+            try
+            {
+                PlayerData playerData = new PlayerData(playerName, numberOfGuesses, ui);
+                playerData.SaveUserNameAndGuesses(playerName, numberOfGuesses);
+                playerData.ShowTopList();
+
+
+            }
+            catch (Exception e)
+            {
+
+                ui.ExceptionStringHandler("Could not create a new user", e);
+
+
+            }
+        }
 
         public bool GameOver(int numberOfGuesses, bool continueGame)
         {
@@ -121,6 +129,23 @@ namespace LabbCleanCode
                 continueGame = false;
             }
             return continueGame;
+        }
+
+        public int CheckPlayerGuess(string generatedNumber, string playerGuess, int numberOfGuesses)
+        {
+            string resultSequenceOfPlayerGuess = GetBullsAndCows(generatedNumber, playerGuess!);
+            ui.PutString(resultSequenceOfPlayerGuess + "\n");
+            numberOfGuesses++;
+            while (resultSequenceOfPlayerGuess != "BBBB,")
+            {
+                numberOfGuesses++;
+                playerGuess = ui.GetString();
+                ui.PutString(playerGuess + "\n");
+                resultSequenceOfPlayerGuess = GetBullsAndCows(generatedNumber, playerGuess!);
+                ui.PutString(resultSequenceOfPlayerGuess + "\n");
+                
+            }
+            return numberOfGuesses;
         }
     }
 }

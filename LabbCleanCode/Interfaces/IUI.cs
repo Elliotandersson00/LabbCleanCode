@@ -11,6 +11,7 @@ namespace LabbCleanCode.Interfaces
         void PutString(string s);
         string GetString();
         void Exit();
+        void ExceptionStringHandler(string s, Exception e);
         void Clear();
     }
 }

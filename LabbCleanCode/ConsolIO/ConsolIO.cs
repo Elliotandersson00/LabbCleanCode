@@ -14,6 +14,11 @@ namespace LabbCleanCode.ConsolIO
             //nothing
         }
 
+        public void ExceptionStringHandler(string s, Exception e)
+        {
+           Console.WriteLine(s, e);
+        }
+
         public void Exit()
         {
             System.Environment.Exit(0);
