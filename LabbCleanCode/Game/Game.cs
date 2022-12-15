@@ -123,5 +123,4 @@ namespace LabbCleanCode
             return continueGame;
         }
     }
- 
 }
