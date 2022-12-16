@@ -54,15 +54,25 @@ namespace LabbCleanCode
 
         public void SaveUserNameAndGuesses(string name, int numberOfGuesses)
         {
+            try
+            {
             StreamWriter output = new StreamWriter("result.txt", append: true);
             output.WriteLine(name + "#&#" + numberOfGuesses);
             output.Close();
+
+            }
+            catch (Exception e)
+            {
+
+                ui.ExceptionStringHandler("Can not save the user and gameinfo.", e);
+            }
         }
         public void ShowTopList()
         {
+
+           
             StreamReader input = new StreamReader("result.txt");
             List<PlayerData> results = new List<PlayerData>();
-            //separets the name and score inside the .txt document.
             string playerNameAndScoreSplitter;
             while ((playerNameAndScoreSplitter = input.ReadLine()) != null)
             {

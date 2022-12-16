@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using LabbCleanCode;
 using LabbCleanCode.Interfaces;
-using LabbCleanCode.ConsolIO;
+
 
 namespace MooGame
 {
@@ -19,3 +19,4 @@ namespace MooGame
         }
     }   
 }
+// TODO : 1 Kommentarer för de delar som inte är självklara , Felhantering?, Tester 2 till ? , Redovisning ^^, 

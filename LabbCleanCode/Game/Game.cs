@@ -84,7 +84,6 @@ namespace LabbCleanCode
 
             ui.PutString("Enter your user name:\n");
             playerName = ui.GetString();
-
             while (continueGame)
             {
                 string generatedNumber = GenerateCorrectNumbers();

@@ -66,7 +66,30 @@ namespace LabbCleanCode.Tests
 
         }
 
-        
+        [TestMethod()]
+        public void GameStartTest()
+        {
+
+            // check if u can continue game or not
+            string playerName = "kakan";
+            bool continueGame = false;
+
+
+            Assert.IsFalse(continueGame);
+
+            playerName = "oscar";
+            continueGame = true;
+            Assert.IsTrue(continueGame);
+
+            // check if number of guess increases
+            
+
+
+
+
         }
+
+
+    }
 }
 
