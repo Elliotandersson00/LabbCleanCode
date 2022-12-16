@@ -42,12 +42,54 @@ namespace LabbCleanCode.Tests
         [TestMethod()]
         public void PlayerDataTest()
         {
+            IUI ui = new ConsolIO();
+
             string playerName = null;
             int numberOfGuesses = 3;
 
             PlayerData playerData = new PlayerData(playerName, numberOfGuesses, ui);
-
+            
             Assert.IsNotNull(playerData);
+
         }
+
+        [TestMethod()]
+        public void ShowTopListTest()
+        {
+            IUI ui = new ConsolIO();
+
+            string playerName = "kalle";
+            int numberOfGuesses = 3;
+
+            PlayerData playerData = new PlayerData(playerName, numberOfGuesses, ui);
+
+            
+            try
+            {
+                playerData.ShowTopList();
+                Assert.IsTrue(true);
+            }
+            catch (Exception)
+            {
+
+                Assert.IsTrue(false);
+            }
+        
+     
+        }
+
+        //[TestMethod]
+        //public void ReadFiles()
+        //{
+        //    try
+        //    {
+        //        Read();
+        //        return; // indicates success
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Assert.Fail(ex.Message);
+        //    }
+        //}
     }
 }
