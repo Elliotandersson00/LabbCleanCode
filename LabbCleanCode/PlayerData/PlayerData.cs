@@ -26,9 +26,6 @@ namespace LabbCleanCode
                 this.ui = ui;
             }
 
-            
-
-
         public void UpdatePlayerData(int guesses)
             {
                 totalGuesses += guesses;

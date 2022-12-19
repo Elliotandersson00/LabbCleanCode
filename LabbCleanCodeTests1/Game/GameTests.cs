@@ -58,7 +58,7 @@ namespace LabbCleanCode.Tests
 
             correctNumber = "1234";
             playerGuess = "1247";
-            expected = "BBC,";
+            expected = "BB,C";
             actual = game.GetBullsAndCows(correctNumber, playerGuess);
 
 
@@ -71,7 +71,7 @@ namespace LabbCleanCode.Tests
         {
 
             // check if u can continue game or not
-            string playerName = "kakan";
+            string? playerName;
             bool continueGame = false;
 
 
@@ -80,15 +80,8 @@ namespace LabbCleanCode.Tests
             playerName = "oscar";
             continueGame = true;
             Assert.IsTrue(continueGame);
-
-            // check if number of guess increases
-            
-
-
-
-
+       
         }
-
 
     }
 }

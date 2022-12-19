@@ -11,7 +11,7 @@ namespace LabbCleanCode
     {
         public void Clear()
         {
-            //nothing
+            Console.Clear();
         }
 
         public void ExceptionStringHandler(string s, Exception e)

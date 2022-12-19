@@ -16,9 +16,7 @@ namespace LabbCleanCode
             this.ui = ui;
         }
 
-       
-
-        public string GetBullsAndCows(string correctNumber, string playerGuess)   //Testad
+        public string GetBullsAndCows(string correctNumber, string playerGuess)  
         {
             int cows = 0, bulls = 0;
 
@@ -44,9 +42,8 @@ namespace LabbCleanCode
             return new string('B', bulls) + "," + new string('C', cows);
         }
 
-        public string GenerateCorrectNumbers() // Testad
+        public string GenerateCorrectNumbers()
         {
-
             string goal = "";
             try
             {
@@ -89,7 +86,6 @@ namespace LabbCleanCode
                 string generatedNumber = GenerateCorrectNumbers();
 
                 ui.PutString("New game:\n");
-                //comment out or remove next line to play real games!
                 ui.PutString("For practice, number is: " + generatedNumber + "\n");
                 string? playerGuess = ui.GetString();
 

@@ -19,4 +19,3 @@ namespace MooGame
         }
     }   
 }
-// TODO : 1 Kommentarer för de delar som inte är självklara , Felhantering?, Tester 2 till ? , Redovisning ^^, 
