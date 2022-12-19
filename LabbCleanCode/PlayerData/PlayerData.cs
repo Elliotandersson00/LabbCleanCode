@@ -49,11 +49,12 @@ namespace LabbCleanCode
             return PlayerName.GetHashCode();
         }
 
-        public void SaveUserNameAndGuesses(string name, int numberOfGuesses)
+        public void SaveUserNameAndGuesses(string name, int numberOfGuesses, string filePath = "result.txt")
         {
             try
             {
-            StreamWriter output = new StreamWriter("result.txt", append: true);
+
+            StreamWriter output = new StreamWriter(filePath, append: true);
             output.WriteLine(name + "#&#" + numberOfGuesses);
             output.Close();
 

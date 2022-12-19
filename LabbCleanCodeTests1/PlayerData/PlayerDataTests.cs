@@ -17,28 +17,28 @@ namespace LabbCleanCode.Tests
     {
         IUI ui;
 
-        //frågor?
-        //[TestMethod]
-        //public void SaveUserNameAndGuesses_ValidInput_FileContainsExpectedData()
-        //{
+       // frågor?
+        [TestMethod]
+        public void SaveUserNameAndGuesses_ValidInput_FileContainsExpectedData()
+        {
 
-        //    IUI ui = new ConsolIO();
+            IUI ui = new ConsolIO();
+            
+            string playerName = "Alice";
+            int numberOfGuesses = 3;
 
-        //    string playerName = "Alice";
-        //    int numberOfGuesses = 3;
+            //Arrange
+            PlayerData playerData = new PlayerData(playerName, numberOfGuesses, ui);
 
-        //    //Arrange
-        //   PlayerData playerData = new PlayerData(playerName, numberOfGuesses, ui);
+            File.WriteAllText(path:"resultTest.txt", string.Empty);
+            //Act
+            playerData.SaveUserNameAndGuesses(playerName, numberOfGuesses, filePath : "resultTest.txt");
 
-
-        //    //Act
-        //    playerData.SaveUserNameAndGuesses(playerName, numberOfGuesses);
-
-        //    //Assert
-        //    string expectedFileContent = "Alice#&#3\n";
-        //    string actualFileContent = File.ReadAllText("result.txt");
-        //    Assert.AreEqual(expectedFileContent, actualFileContent);
-        //}
+            //Assert
+            string expectedFileContent = "Alice#&#3\r\n";
+            string actualFileContent = File.ReadAllText("resultTest.txt");
+            Assert.AreEqual(expectedFileContent, actualFileContent);
+        }
 
         [TestMethod()]
         public void PlayerDataTest()
