@@ -17,7 +17,7 @@ namespace LabbCleanCode.Tests
     {
         IUI ui;
 
-        //frågor? 
+        //frågor?
         //[TestMethod]
         //public void SaveUserNameAndGuesses_ValidInput_FileContainsExpectedData()
         //{
@@ -27,14 +27,14 @@ namespace LabbCleanCode.Tests
         //    string playerName = "Alice";
         //    int numberOfGuesses = 3;
 
-        //    Arrange
+        //    //Arrange
         //   PlayerData playerData = new PlayerData(playerName, numberOfGuesses, ui);
 
 
-        //    Act
+        //    //Act
         //    playerData.SaveUserNameAndGuesses(playerName, numberOfGuesses);
 
-        //    Assert
+        //    //Assert
         //    string expectedFileContent = "Alice#&#3\n";
         //    string actualFileContent = File.ReadAllText("result.txt");
         //    Assert.AreEqual(expectedFileContent, actualFileContent);
@@ -54,7 +54,7 @@ namespace LabbCleanCode.Tests
 
         }
         
-        //LabbCleanCodeTest1 ta bort fil?
+
         [TestMethod()]
         public void ShowTopListTest()
         {
@@ -76,7 +76,6 @@ namespace LabbCleanCode.Tests
 
                 Assert.IsTrue(false);
             }
-
 
         }
 
